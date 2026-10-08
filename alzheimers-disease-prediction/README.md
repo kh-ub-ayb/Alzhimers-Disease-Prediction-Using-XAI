@@ -14,7 +14,7 @@ An AI-powered Alzheimer's Disease Prediction system that classifies MRI brain im
 - Performance evaluation and model comparison
 
 ---
-
+<!--   
 ## 🏃‍♂️ How to Run
 
 1. Navigate to the project code directory:
@@ -30,7 +30,7 @@ cd "d:\New folder\PROJECTS\MajorProject\alzheimers-disease-prediction\Project Co
 ```
 
 3. Open your browser and go to: http://127.0.0.1:5000
-
+-->
 ## 🛠️ Technology Stack
 
 - Python
