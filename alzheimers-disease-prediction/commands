@@ -1,0 +1,5 @@
+cd "d:\New folder\PROJECTS\MajorProject\alzheimers-disease-prediction\Project Code"
+
+& "d:\New folder\PROJECTS\MajorProject\.venv\Scripts\python.exe" app.py
+
+http://127.0.0.1:5000

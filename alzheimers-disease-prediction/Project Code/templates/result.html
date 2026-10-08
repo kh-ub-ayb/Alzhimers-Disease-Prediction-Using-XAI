@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container" style="max-width: 1300px;">
+    
+    <!-- TOP SECTION: Prediction Results -->
+    <div class="glass-panel" style="width: 100%; max-width: 800px; margin-bottom: 2rem;">
+        <h2>Prediction: <span style="color: #34d399;">{{ prediction }}</span></h2>
+        <p style="color: #cbd5e1; font-size: 1.2rem;">Confidence: {{ confidence }}%</p>
+    </div>
+
+    <!-- 2x2 Grid for Visualizations -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%;">
+        
+        <!-- Box 1: Grad-CAM Heatmap -->
+        {% if gradcam %}
+        <div class="glass-panel" style="margin: 0;">
+            <h3 style="color: #a78bfa; margin-bottom: 20px;">Grad-CAM Heatmap</h3>
+            <div style="display: flex; justify-content: center; gap: 20px;">
+                <img src="{{ image }}" width="200" alt="Original">
+                <img src="{{ raw_heatmap }}" width="200" alt="Raw Heatmap">
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Box 2: LIME Explanation -->
+        {% if lime %}
+        <div class="glass-panel" style="margin: 0;">
+            <h3 style="color: #a78bfa; margin-bottom: 20px;">LIME Explanation</h3>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+                <img src="{{ image }}" width="200" alt="Original">
+                {% if lime_chart %}
+                <img src="{{ lime_chart }}" style="width: 280px; box-shadow: none;" alt="LIME Chart">
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Box 3: Heatmap Overlay on MRI -->
+        {% if gradcam %}
+        <div class="glass-panel" style="margin: 0;">
+            <h3 style="color: #60a5fa; margin-bottom: 20px;">Heatmap Overlay on MRI</h3>
+            <div class="equation-container" style="margin: 0; gap: 10px;">
+                <img src="{{ image }}" width="130" alt="Original">
+                <div class="math-symbol" style="font-size: 2rem;">+</div>
+                <img src="{{ raw_heatmap }}" width="130" alt="Raw Heatmap">
+                <div class="math-symbol" style="font-size: 2rem;">=</div>
+                <img src="{{ gradcam }}" width="130" alt="Overlay">
+                <!-- Colorbar -->
+                <div style="display: flex; align-items: center; margin-left: 5px;">
+                    <div class="colorbar" style="height: 100px;"></div>
+                    <div class="colorbar-container" style="height: 100px; font-size: 0.6rem; text-align: left;">
+                        <span>High<br>Importance</span>
+                        <span>Low<br>Importance</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Box 4: LIME Explanation Visualization -->
+        {% if lime %}
+        <div class="glass-panel" style="margin: 0;">
+            <h3 style="color: #60a5fa; margin-bottom: 20px;">LIME Explanation Visualization</h3>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+                <img src="{{ image }}" width="200" alt="Original">
+                <img src="{{ lime }}" width="200" alt="LIME Output">
+                
+                <!-- LIME Legend -->
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-left: 10px; font-size: 0.8rem; text-align: left;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <div style="width: 15px; height: 15px; background-color: #22c55e; border-radius: 3px;"></div>
+                        <span style="color: #cbd5e1;">Supports<br>Prediction</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <div style="width: 15px; height: 15px; background-color: #ef4444; border-radius: 3px;"></div>
+                        <span style="color: #cbd5e1;">Contradicts<br>Prediction</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+
+    <a href="/" class="back-link" style="margin-top: 3rem;">⬅ Run Another Prediction</a>
+
+</div>
+
+</body>
+</html>

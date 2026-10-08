@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alzheimer's Disease Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <div class="glass-panel">
+        <h1>🧠 Alzheimer's Disease Prediction</h1>
+        <p style="color: #cbd5e1; margin-bottom: 2rem;">Upload an MRI scan to generate AI-driven diagnosis and XAI visualizations.</p>
+
+        <form action="/predict" method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+            
+            <div style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 15px; border: 1px dashed rgba(255,255,255,0.3);">
+                <input type="file" name="image" required>
+            </div>
+
+            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                <select name="model">
+                    <option value="efficientnet"> ResNet50</option>
+                    <option value="cnn">Custom CNN</option>
+                    <option value="resnet">EfficientNet</option>
+                </select>
+
+                <button type="submit">Run Prediction</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
