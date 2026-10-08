@@ -1,4 +1,4 @@
-# 🧠 Alzheimer's Disease Prediction Using Deep Learning
+# 🧠 Alzheimer's Disease Prediction Using Deep Learning and Explainable AI
 
 An AI-powered Alzheimer's Disease Prediction system that classifies MRI brain images into different stages of Alzheimer's disease using deep learning models and provides real-time prediction through a Flask web application.
 
@@ -46,25 +46,3 @@ cd "d:\New folder\PROJECTS\MajorProject\alzheimers-disease-prediction\Project Co
 - Matplotlib
 
 ---
-
-## 📊 Results
-
-The performance metrics, model comparison, and evaluation results are available in the **Results** section of this repository.
-
----
-
-## 📷 Screenshots
-
-Application screenshots, prediction outputs, and visual results are available in the **screenshots/** directory.
-
----
-
-## 📐 Diagrams
-
-System architecture, workflow, and implementation diagrams are available in the **diagrams/** directory.
-
----
-
-## 🖼️ Sample Images
-
-Sample MRI brain images used for demonstration are available in the **sample_images/** directory.
